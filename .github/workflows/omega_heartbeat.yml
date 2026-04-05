@@ -39,7 +39,7 @@ jobs:
           echo "{\"username\":\"$KAGGLE_USERNAME\",\"key\":\"$KAGGLE_KEY\"}" > ~/.kaggle/kaggle.json
           echo "✅ Connection Established."
 
-          # 5. COMMAND KAGGLE TO START TRAINING (Updated Version)
+      # 5. COMMAND KAGGLE TO START TRAINING (Fixed Indentation)
       - name: Launch Training Session
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
@@ -47,11 +47,18 @@ jobs:
         run: |
           echo "🚀 COMMANDING KAGGLE TO START TRAINING..."
           
-          # CHANGE 'dushi2' TO YOUR USERNAME BELOW:
-          REPO="https://github.com/dushi2/project-honey-omega.git"
+          # CLONE THE REPOSITORY
+          # CHANGE 'darioanderson' TO YOUR USERNAME BELOW
+          git clone https://github.com/darioanderson/project-honey-omega.git
           
-          # Updated Command: We just push the Repo URL. 
-          # It reads kernel-metadata.json automatically from the repo.
-          kaggle kernels push $REPO
+          # ENTER THE FOLDER
+          cd project-honey-omega
           
-          echo "✅ COMMAND SENT. QUEEN IS NOW TRAINING."
+          # VERIFY FILES
+          echo "Files in directory:"
+          ls -la
+          
+          # PUSH TO KAGGLE
+          kaggle kernels push .
+          
+          echo "✅ COMMAND SENT."

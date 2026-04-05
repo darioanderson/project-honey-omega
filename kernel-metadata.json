@@ -1,0 +1,12 @@
+{
+  "title": "OMEGA-SESSION",
+  "code_file": "train.py",
+  "language": "Python",
+  "kernel_type": "Notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

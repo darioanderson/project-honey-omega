@@ -39,7 +39,7 @@ jobs:
           echo "{\"username\":\"$KAGGLE_USERNAME\",\"key\":\"$KAGGLE_KEY\"}" > ~/.kaggle/kaggle.json
           echo "✅ Connection Established."
 
-      # 5. COMMAND KAGGLE TO START TRAINING
+          # 5. COMMAND KAGGLE TO START TRAINING (Updated Version)
       - name: Launch Training Session
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
@@ -47,13 +47,11 @@ jobs:
         run: |
           echo "🚀 COMMANDING KAGGLE TO START TRAINING..."
           
-          # CHANGE 'dushi2' TO YOUR GITHUB USERNAME BELOW:
-          kaggle kernels push \
-            --display-name "OMEGA-SESSION-$(date +%s)" \
-            https://github.com/dushi2/project-honey-omega.git \
-            --kernel-type "notebook" \
-            --is-private \
-            --enable-gpu \
-            --enable-internet
+          # CHANGE 'dushi2' TO YOUR USERNAME BELOW:
+          REPO="https://github.com/dushi2/project-honey-omega.git"
           
-          echo "✅ COMMAND SENT. QUEEN IS NOW TRAINING ON KAGGLE."
+          # Updated Command: We just push the Repo URL. 
+          # It reads kernel-metadata.json automatically from the repo.
+          kaggle kernels push $REPO
+          
+          echo "✅ COMMAND SENT. QUEEN IS NOW TRAINING."
